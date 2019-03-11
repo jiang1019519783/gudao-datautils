@@ -68,13 +68,17 @@ public class WashDataDao {
             "    information_schema.COLUMNS");
         sql.append(" where table_schema ~ ? ");
         sql.append(" and column_name ~ ? ");
-        sql.append(" and table_name ~ ? ");
+        if(StringUtils.isNotEmpty(dataBaseInfoVo.getSourceColumn())) {
+            sql.append(" and table_name ~ ? ");
+        }
         sql.append(" order by table_name");
         try {
             PreparedStatement ps = conn.prepareStatement(sql.toString());
             ps.setString(1, dataBaseInfoVo.getSourceSechma());
             ps.setString(2, dataBaseInfoVo.getSourceColumn());
-            ps.setString(3, dataBaseInfoVo.getSourceTable());
+            if(StringUtils.isNotEmpty(dataBaseInfoVo.getSourceColumn())) {
+                ps.setString(3, dataBaseInfoVo.getSourceTable());
+            }
             //获取查询结果集
             return packageData(ps.executeQuery());
         } catch (SQLException e) {

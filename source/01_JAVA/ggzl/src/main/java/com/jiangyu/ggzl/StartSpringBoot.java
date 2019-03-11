@@ -19,8 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class StartSpringBoot extends SpringBootServletInitializer{  
 	/**
 	 * 日志对象
-	 */
-	private static Log logger = LogFactory.getLog(StartSpringBoot.class);
+	 */	private static Log logger = LogFactory.getLog(StartSpringBoot.class);
 	
 	@Override
     protected SpringApplicationBuilder configure(SpringApplicationBuilder application) {

@@ -67,6 +67,13 @@ public class SqlConnection {
         this.url = "jdbc:" + this.dataBaseType + "://" + this.ip + ":" + this.port + "/" + this.dataBaseName;
     }
     
+    public SqlConnection(String url,String username,String password,String dataBaseType) {
+        this.url = url;
+        this.userName = username;
+        this.password = password;
+        this.dataBaseType = dataBaseType;
+    }
+    
     public Connection getConnection() throws ClassNotFoundException, SQLException {
         String driver = getDriver();
         if(StringUtils.isEmpty(driver)) {

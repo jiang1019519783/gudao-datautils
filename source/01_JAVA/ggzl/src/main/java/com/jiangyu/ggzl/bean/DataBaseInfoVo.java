@@ -2,6 +2,8 @@ package com.jiangyu.ggzl.bean;
 
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 /**
  * 页面输入的对象实体
  * VueLoginInfoVo
@@ -18,27 +20,27 @@ public class DataBaseInfoVo {
     /**
      * ip
      */
-    @NotNull(message="数据库ip不允许为空")
+    @NotEmpty(message="数据库ip不允许为空")
     private String ip;
     /**
      * 端口
      */
-    @NotNull(message="数据库端口不允许为空")
+    @NotEmpty(message="数据库端口不允许为空")
     private String port;
     /**
      * 数据库名
      */
-    @NotNull(message="数据库名不允许为空")
+    @NotEmpty(message="数据库名不允许为空")
     private String dataBaseName;
     /**
      * 用户
      */
-    @NotNull(message="用户名不允许为空")
+    @NotEmpty(message="用户名不允许为空")
     private String userName;
     /**
      * 密码
      */
-    @NotNull(message="密码不允许为空")
+    @NotEmpty(message="密码不允许为空")
     private String password;
     /**
      * 源数据库模式
@@ -51,7 +53,7 @@ public class DataBaseInfoVo {
     /**
      * 待清洗数据字段
      */
-    @NotNull(message="待清洗字段不允许为空")
+    @NotEmpty(message="待清洗字段不允许为空")
     private String sourceColumn;
     /**
      * 临时表所在数据库模式名

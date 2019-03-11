@@ -22,8 +22,6 @@ public class SjjzThread implements Runnable {
 
     private Log logger = LogFactory.getLog(SjjzThread.class);
 
-    private static final String LOCK = "LOCK";
-
     private String tableName;
     private String columnName;
     private DataBaseInfoVo dataBaseInfoVo;
@@ -46,9 +44,7 @@ public class SjjzThread implements Runnable {
             Connection conn = new SqlConnection(dataBaseInfoVo).getConnection();
             washDataDao.doCorrectionData(conn, tableName, columnName, dataBaseInfoVo);
             conn.close();
-            synchronized (LOCK) {
-                cdl.countDown();
-            }
+            cdl.countDown();
         } catch (Exception e) {
             logger.error("表：" + tableName + "字段：" + columnName + "更新失败",e);
         }
